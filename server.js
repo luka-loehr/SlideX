@@ -141,6 +141,19 @@ app.post('/api/search', async (req, res) => {
     res.status(500).json({ error: 'Search failed', details: error.message });
   }
 });
+// Generate a single slide from JSON specification
+app.post("/api/generate-slide", (req, res) => {
+  try {
+    const spec = req.body || {};
+    const { generateHtmlSlide } = require("./slideGenerator");
+    const html = generateHtmlSlide(spec);
+    res.json({ html });
+  } catch (err) {
+    console.error("Slide generation error:", err);
+    res.status(500).json({ error: "Slide generation failed", details: err.message });
+  }
+});
+
 
 // Generate slides endpoint with streaming
 app.post('/api/generate', async (req, res) => {
