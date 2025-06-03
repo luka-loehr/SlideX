@@ -5,7 +5,7 @@
 /* Custom global styles */
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply font-sans bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900 antialiased;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -33,7 +33,7 @@
   }
   
   .chat-message {
-    @apply p-4 rounded-lg mb-2 max-w-3xl;
+    @apply p-4 rounded-lg mb-2 max-w-2xl shadow;
   }
   
   .user-message {

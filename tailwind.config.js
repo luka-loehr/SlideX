@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui']
+      },
       colors: {
         primary: '#0a3b5c',
         secondary: '#00b2ff',

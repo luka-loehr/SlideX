@@ -90,24 +90,26 @@ const ChatInterface = ({ onSlidesUpdate, onGeneratingChange, presentationData, s
         ) : (
           <>
             {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`${
-                  msg.role === 'user' ? 'chat-message user-message' : 'chat-message agent-message'
-                }`}
-              >
-                <div className="font-semibold mb-1">
-                  {msg.role === 'user' ? 'You' : 'SlideX AI'}
-                </div>
-                <div className="whitespace-pre-wrap">{msg.content}</div>
-                {msg.function_call && (
-                  <div className="mt-2 p-2 bg-black bg-opacity-20 rounded text-sm">
-                    <i className="fas fa-cog mr-2"></i>
-                    {msg.function_call.name === 'generate_presentation' 
-                      ? 'Starting slide generation...' 
-                      : `Calling: ${msg.function_call.name}`}
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div
+                  className={`chat-message ${msg.role === 'user' ? 'user-message' : 'agent-message'}`}
+                >
+                  <div className="flex items-center mb-1">
+                    <i className={`fas ${msg.role === 'user' ? 'fa-user-circle' : 'fa-robot'} mr-2`}></i>
+                    <span className="font-semibold">
+                      {msg.role === 'user' ? 'You' : 'SlideX AI'}
+                    </span>
                   </div>
-                )}
+                  <div className="whitespace-pre-wrap">{msg.content}</div>
+                  {msg.function_call && (
+                    <div className="mt-2 p-2 bg-black bg-opacity-20 rounded text-sm">
+                      <i className="fas fa-cog mr-2"></i>
+                      {msg.function_call.name === 'generate_presentation'
+                        ? 'Starting slide generation...'
+                        : `Calling: ${msg.function_call.name}`}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
             {setupAgent.isProcessing() && (
