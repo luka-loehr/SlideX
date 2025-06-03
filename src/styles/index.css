@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+/* Slide container styles */
+@layer components {
+  .slide-container {
+    @apply w-full max-w-6xl mx-auto bg-gradient-to-br from-black to-primary text-white rounded-lg shadow-2xl overflow-hidden;
+    aspect-ratio: 16/9;
+  }
+  
+  .slide-content {
+    @apply p-12 h-full flex flex-col justify-center;
+  }
+  
+  .adidas-stripes {
+    @apply absolute bottom-0 right-0 flex space-x-4 opacity-70;
+  }
+  
+  .stripe {
+    @apply w-8 h-32 bg-white transform -skew-x-12;
+  }
+  
+  .chat-message {
+    @apply p-4 rounded-lg mb-2 max-w-3xl;
+  }
+  
+  .user-message {
+    @apply bg-blue-600 text-white ml-auto;
+  }
+  
+  .agent-message {
+    @apply bg-gray-200 text-gray-900;
+  }
+}
+
+/* Slide render container styles */
+.slide-render-container > * {
+  transform-origin: top left;
+  transform: scale(var(--scale-factor, 1));
+}
+
+/* Ensure imported slide styles work properly */
+.slide-render-container .slide-container {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Fix aspect ratio for slides */
+@media (min-width: 768px) {
+  .slide-render-container > * {
+    --scale-factor: min(
+      calc(100vw / 1280),
+      calc(100vh / 720)
+    );
+  }
+}
+
+/* Slide presentation styles */
+.slide-presentation-container {
+  width: 1280px;
+  height: 720px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.slide-presentation-container > * {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* Scale slides to fit screen */
+@media (max-aspect-ratio: 16/9) {
+  .slide-presentation-container {
+    transform: scale(calc(100vh / 720));
+  }
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .slide-presentation-container {
+    transform: scale(calc(100vw / 1280));
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+} 
