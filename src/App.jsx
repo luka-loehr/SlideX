@@ -5,6 +5,8 @@ import SlideRenderer from './components/SlideRenderer'
 import SlideShowMode from './components/SlideShowMode'
 import FileUploader from './components/FileUploader'
 import ExportControls from './components/ExportControls'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import { WebSocketProvider } from './utils/websocket'
 import { AgentProvider } from './agents/AgentContext'
 
@@ -22,14 +24,11 @@ function App() {
   return (
     <WebSocketProvider>
       <AgentProvider>
-        <div className="min-h-screen bg-gray-50">
+        <Header />
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
           <Routes>
             <Route path="/" element={
               <div className="container mx-auto px-4 py-8">
-                <header className="mb-8">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-2">SlideX</h1>
-                  <p className="text-lg text-gray-600">AI-Powered Presentation Generator</p>
-                </header>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Left Panel - Chat and Controls */}
@@ -117,6 +116,7 @@ function App() {
             } />
           </Routes>
         </div>
+        <Footer />
       </AgentProvider>
     </WebSocketProvider>
   )
