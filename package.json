@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "start": "node server.js",
     "server": "node server.js",
+    "setup": "node scripts/setup.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["presentation", "ai", "gpt-4", "slides"],

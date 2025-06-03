@@ -4,10 +4,12 @@ SlideX is a web application that uses GPT-4o to generate PowerPoint-style presen
 
 ## Setup
 
-1. Install dependencies:
+1. Run the setup script to install Node and Python dependencies:
    ```bash
-   npm install
+   node scripts/setup.js
    ```
+   This installs Node modules, creates a `.venv` virtual environment and
+   installs Python packages from `requirements.txt`.
 2. Create a `.env` file with your OpenAI API key. The application checks the
    variables `OPENAI_API_KEY` or `API_KEY`:
    ```env
