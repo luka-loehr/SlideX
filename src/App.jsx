@@ -76,7 +76,7 @@ function App() {
                       </>
                     ) : (
                       <div className="bg-white rounded-lg shadow-lg p-12 text-center">
-                        <i className="fas fa-presentation text-6xl text-gray-300 mb-4"></i>
+                        <i className="fas fa-chalkboard text-6xl text-gray-300 mb-4"></i>
                         <p className="text-gray-500 text-lg">
                           Start a conversation to generate your presentation
                         </p>

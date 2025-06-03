@@ -14,8 +14,14 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Configure multer for file uploads
+const uploadsDir = path.join(__dirname, 'uploads');
+// Ensure the uploads directory exists
+fs.mkdir(uploadsDir, { recursive: true }).catch((err) => {
+  console.error('Failed to create uploads directory:', err);
+});
+
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, 'uploads'),
+  destination: uploadsDir,
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
