@@ -33,3 +33,14 @@ Slides are streamed to all WebSocket clients as JSON messages of the form:
 ```json
 { "type": "slide", "html": "<div>...</div>" }
 ```
+
+### CLI Slide Generator
+
+For quick testing you can generate slides directly from the command line without starting the server. Run:
+
+```bash
+node scripts/generate-slides.js "Your presentation topic"
+```
+
+This will create a `presentation.html` file containing the generated slides.
+
